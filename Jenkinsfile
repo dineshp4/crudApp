@@ -20,11 +20,10 @@ node {
       }
    }
    agent { dockerfile true }
-   stages {
-      stage('Test') {
-           steps {
-               sh 'java -version'
-          }
+   stage('Test') {
+        steps {
+            sh 'java -version'
+        }
    }
     
 //   stage('Results') {
