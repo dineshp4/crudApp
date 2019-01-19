@@ -19,6 +19,17 @@ node {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
    }
+   stage('Build Docker Image') {
+           when {
+               branch 'master'
+           }
+           steps {
+               script {
+                   app = docker.build("dineshp4/crudApp")
+               }
+           }
+       }
+    
 //   stage('Results') {
 //      junit '**/target/surefire-reports/TEST-*.xml'
 //      archive 'target/*.jar'
