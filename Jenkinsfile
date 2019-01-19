@@ -19,8 +19,12 @@ node {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
    }
-   stage('Docker') {
-       agent { dockerfile true }
+   agent { dockerfile true }
+   stages {
+      stage('Test') {
+           steps {
+               sh 'java -version'
+          }
    }
     
 //   stage('Results') {
