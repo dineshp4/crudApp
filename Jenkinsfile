@@ -17,13 +17,10 @@ pipeline {
                     }
                 }
         }
-    post {
-        success {
+    
             agent {
                 dockerfile {
                     filename 'Dockerfile'
                 }
             }
-        }
-    }
 }
