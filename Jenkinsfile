@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    tools {
+        jdk 'Java'
+        maven 'Maven'
+    }
         stages {
             stage('Git') {
                 steps {
@@ -7,11 +11,8 @@ pipeline {
                     }
                 }
             stage('Build') {
-                tools {
-                    jdk 'Java'
-                    maven 'Maven'
-                }
                 steps {
+                    sh 'mvn -Dmaven.test.failure.ignore=true install'
                     sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
                     }
                 }
