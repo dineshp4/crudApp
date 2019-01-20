@@ -19,12 +19,14 @@ node {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
    }
-   agent { dockerfile true }
-   stage('Test') {
-        steps {
-            sh 'java -version'
-        }
-   }
+   stage('Docker Build') {
+        agent {
+            dockerfile {
+                filename 'Dockerfile'
+            }
+        }      
+   }    
+
     
 //   stage('Results') {
 //      junit '**/target/surefire-reports/TEST-*.xml'
