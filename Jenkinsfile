@@ -17,8 +17,13 @@ pipeline {
                     }
                 }
             stage('Docker'){
-                dockerfile {
-                    filename 'Dockerfile'
+                steps {
+                    // One or more steps need to be included within the steps block.
+                }
+                agent {
+                    dockerfile {
+                        filename 'Dockerfile'
+                    }
                 }
             }
         }
