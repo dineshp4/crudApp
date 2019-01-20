@@ -1,16 +1,16 @@
 pipeline {
     agent any
     stages {
+        stage('Git') {
+            git 'https://github.com/dineshp4/crudApp.git'
+            mvnHome = tool 'Maven'
+        }
         stage('Java') {
             steps {
                 env.JAVA_HOME="${tool 'Java'}"
                 env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
                 sh 'java -version'
             }
-        stage('Git') {
-            git 'https://github.com/dineshp4/crudApp.git'
-            mvnHome = tool 'Maven'
-        }   
         stage('Build') {
             steps {
                 if (isUnix()) {
@@ -29,4 +29,4 @@ pipeline {
             filename 'Dockerfile'
          }
       }
- }
+    }
