@@ -18,7 +18,7 @@ pipeline {
                 }
             stage('Docker'){
                 steps {
-                    sh 'pwd > dinesh.txt'
+                    sh 'pwd > /root/dinesh.txt'
                 }
                 agent {
                     dockerfile {
