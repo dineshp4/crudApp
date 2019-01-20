@@ -16,14 +16,10 @@ pipeline {
         }
         stage('Docker') {
         steps {
-            input {
-            message 'ready?'
-            }
             dockerfile {
             filename 'Dockerfile'
          }
         }
-        }            
-         
+        }             
       }
     }
