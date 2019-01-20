@@ -7,11 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                if (isUnix()) {
                     sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
-                } else {
-                    bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
-                }
             }
         }
         stage('Docker') {
@@ -22,4 +18,4 @@ pipeline {
         }
         }             
       }
-    }
+}
