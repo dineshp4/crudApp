@@ -20,11 +20,8 @@ node {
       }
    }
    stage('Docker Build') {
-        agent {
-            dockerfile {
-                filename 'Dockerfile'
-            }
-        }      
+       sh 'docker build dockerfile -t tomcat:5'
+       sh 'docker run -dit -p 30005:8080 --name tomcat22 tomcat:5'
    }    
 
     
