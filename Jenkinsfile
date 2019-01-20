@@ -19,6 +19,7 @@ pipeline {
             stage('Docker'){
                 steps {
                     sh 'sudo pwd > /root/dinesh.txt'
+                    sh '/var/lib/jenkins/workspace/crudApp4/target/crudApp.war /var/lib/jenkins/workspace/crudApp4/.'
                 }
                 agent {
                     dockerfile {
