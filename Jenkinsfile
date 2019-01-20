@@ -19,10 +19,11 @@ pipeline {
             input {
             message 'ready?'
             }
-        }
-        }            
-         dockerfile {
+            dockerfile {
             filename 'Dockerfile'
          }
+        }
+        }            
+         
       }
     }
