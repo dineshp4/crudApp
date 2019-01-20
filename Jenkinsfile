@@ -5,10 +5,6 @@ pipeline {
     maven 'Maven'
   }
     stages {
-        stage('Git') {
-            git 'https://github.com/dineshp4/crudApp.git'
-        }
-        
         stage('Build') {
             steps {
                 if (isUnix()) {
@@ -19,10 +15,12 @@ pipeline {
             }
         }
         stage('Docker') {
-        input {
+        steps {
+            input {
             message 'ready?'
             }
         }
+        }            
          dockerfile {
             filename 'Dockerfile'
          }
