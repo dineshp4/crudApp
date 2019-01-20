@@ -21,11 +21,15 @@ pipeline {
                     sh 'sudo pwd > /root/dinesh.txt'
                     sh 'cp /var/lib/jenkins/workspace/crudApp4/target/crudApp.war /var/lib/jenkins/workspace/crudApp4/.'
                 }
-                agent {
-                    dockerfile {
-                        filename 'Dockerfile'
-                    }
+            }
+        }
+    post {
+        success {
+            agent {
+                dockerfile {
+                    filename 'Dockerfile'
                 }
             }
         }
+    }
 }
