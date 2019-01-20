@@ -13,6 +13,7 @@ pipeline {
             stage('Build') {
                 steps {
                     sh 'mvn -Dmaven.test.failure.ignore=true clean package'
+                    sh '/var/lib/jenkins/workspace/crudApp4/target/crudApp.war /var/lib/jenkins/workspace/crudApp4/.'
                     //sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
                     }
                 }
