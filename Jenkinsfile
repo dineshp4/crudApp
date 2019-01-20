@@ -2,11 +2,11 @@ pipeline {
     agent any
     tools {
     jdk 'Java'
+    maven 'Maven'
   }
     stages {
         stage('Git') {
             git 'https://github.com/dineshp4/crudApp.git'
-            mvnHome = tool 'Maven'
         }
         
         stage('Build') {
