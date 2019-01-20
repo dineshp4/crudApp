@@ -1,21 +1,21 @@
 pipeline {
     agent any
-    tools {
-    jdk 'Java'
-    maven 'Maven'
-  }
-    stages {
-        stage('Build') {
-            steps {
+        stages {
+            stage('Build') {
+                tools {
+                    jdk 'Java'
+                    maven 'Maven'
+                    }
+                steps {
                     sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+                    }
+                }
+            stage('Docker') {
+                steps {
+                    dockerfile {
+                        filename 'Dockerfile'
+                        }
+                    }
+                }             
             }
-        }
-        stage('Docker') {
-        steps {
-            dockerfile {
-            filename 'Dockerfile'
-         }
-        }
-        }             
-      }
-}
+    }
