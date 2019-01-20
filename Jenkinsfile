@@ -16,12 +16,6 @@ pipeline {
                     //sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
                     }
                 }
-            stage('Docker'){
-                steps {
-                    sh 'sudo pwd > /root/dinesh.txt'
-                    sh 'cp /var/lib/jenkins/workspace/crudApp4/target/crudApp.war /var/lib/jenkins/workspace/crudApp4/.'
-                }
-            }
         }
     post {
         success {
