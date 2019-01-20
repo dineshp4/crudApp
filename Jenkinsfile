@@ -20,7 +20,7 @@ node {
       }
    }
    stage('Docker Build') {
-       sh 'docker build Dockerfile -t tomcat:5'
+       sh 'docker build crudApp3 -t tomcat:5'
        sh 'docker run -dit -p 30005:8080 --name tomcat22 tomcat:5'
    }    
 
