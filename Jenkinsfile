@@ -8,6 +8,7 @@ pipeline {
                 }
             stage('Build') {
                 tools {
+                    jdk 'Java'
                     maven 'Maven'
                 }
                 steps {
