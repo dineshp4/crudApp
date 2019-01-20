@@ -17,10 +17,7 @@ pipeline {
                     }
                 }
         }
-    
-            agent {
-                dockerfile {
-                    filename 'Dockerfile'
-                }
-            }
+    dockerfile {
+        filename 'Dockerfile'
+    }
 }
