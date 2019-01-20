@@ -1,16 +1,14 @@
 pipeline {
     agent any
+    tools {
+    jdk 'Java'
+  }
     stages {
         stage('Git') {
             git 'https://github.com/dineshp4/crudApp.git'
             mvnHome = tool 'Maven'
         }
-        stage('Java') {
-            steps {
-                env.JAVA_HOME="${tool 'Java'}"
-                env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-                sh 'java -version'
-            }
+        
         stage('Build') {
             steps {
                 if (isUnix()) {
