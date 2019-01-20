@@ -18,7 +18,7 @@ pipeline {
                 }
             stage('Docker'){
                 steps {
-                    sh 'echo "Docker"'
+                    sh 'pwd'
                 }
                 agent {
                     dockerfile {
