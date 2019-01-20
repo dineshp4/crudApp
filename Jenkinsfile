@@ -12,16 +12,16 @@ pipeline {
                 }
             stage('Build') {
                 steps {
-                    sh 'mvn -Dmaven.test.failure.ignore=true install'
-                    sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+                    sh 'mvn -Dmaven.test.failure.ignore=true clean package'
+                    //sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
                     }
                 }
-            stage('Docker') {
+           /* stage('Docker') {
                 steps {
                     dockerfile {
                         filename 'Dockerfile'
                         }
                     }
-                }             
+                } */            
             }
     }
