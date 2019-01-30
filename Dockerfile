@@ -1,5 +1,5 @@
 FROM tomcat
 WORKDIR /usr/local/tomcat
-COPY crudApp.war webapps/.
+RUN yum -y install wget
 CMD ["catalina.sh", "run"]
 EXPOSE 8080
