@@ -24,12 +24,13 @@ pipeline {
             }
             stage ('Docker') {
                 steps {
-                    sh 'wget http://10.0.1.13:8081/repository/maven-releases/maven-Central/crudApp/1.${BUILD_NUMBER}/crudApp-1.${BUILD_NUMBER}.war -O /nexus/crudApp.war'
+                    sh 'wget http://10.0.1.13:8081/repository/maven-releases/maven-Central/crudApp/1.${BUILD_NUMBER}/crudApp-1.${BUILD_NUMBER}.war -O crudApp.war'
                 }
             }
             stage ('Docker2') {
                 steps{
                     sh 'docker build -t crudapp:1.${BUILD_NUMBER} .'
+                    sh 'rm -rf crud*'
                 }
             }
         }
