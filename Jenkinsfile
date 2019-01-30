@@ -29,7 +29,7 @@ pipeline {
             }
             stage ('Docker2') {
                 steps{
-                    sh 'docker build -t crudApp:1.${BUILD_NUMBER} .'
+                    sh 'docker build -t crudapp:1.${BUILD_NUMBER} .'
                 }
             }
         }
