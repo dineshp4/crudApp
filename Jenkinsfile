@@ -29,12 +29,7 @@ pipeline {
             }
             stage ('Docker2') {
                 steps{
-                    sh 'clear'
-                }
-                agent {
-                    dockerfile {
-                            filename 'Dockerfile'
-                        }
+                    sh 'docker build -t crudApp:1.${BUILD_NUMBER} .'
                 }
             }
         }
