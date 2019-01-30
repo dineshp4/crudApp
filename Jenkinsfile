@@ -22,11 +22,11 @@ pipeline {
                     nexusArtifactUploader artifacts: [[artifactId: 'crudApp', classifier: '', file: 'target/crudApp.war', type: 'war']], credentialsId: 'nexus', groupId: 'maven-Central', nexusUrl: '10.0.1.13:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-releases', version: '1.${BUILD_NUMBER}'
                 }
             }
-           /* stage ('Docker') {
+            stage ('Docker') {
                 steps {
-                    sh "sed -i "3 a 'RUN wget http://10.0.1.13:8081/repository/maven-releases/maven-Central/crudApp/1.${BUILD_NUMBER}/crudApp-1.${BUILD_NUMBER}.war -O webapps/crudApp.war" Dockerfile'"
+                    sh 'wget http://10.0.1.13:8081/repository/maven-releases/maven-Central/crudApp/1.${BUILD_NUMBER}/crudApp-1.${BUILD_NUMBER}.war -O /nexus/crudApp.war'
                 }
-            }*/
+            }
             stage ('Docker2') {
                 steps{
                     sh 'clear'
