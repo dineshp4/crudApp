@@ -23,10 +23,13 @@ pipeline {
                 }
             }
             stage ('Docker') {
-                agent {
-                    dockerfile {
-                        filename 'Dockerfile'
+                steps {
+                    agent {
+                        dockerfile {
+                            filename 'Dockerfile'
+                        }
                     }
                 }
+            }
         }
 }
