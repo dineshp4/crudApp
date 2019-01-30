@@ -30,6 +30,9 @@ pipeline {
                 }
             }
             stage ('Docker2') {
+                steps{
+                    sh 'clear'
+                }
                 agent {
                     dockerfile {
                             filename 'Dockerfile'
