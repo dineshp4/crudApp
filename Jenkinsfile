@@ -58,7 +58,7 @@ pipeline {
                     milestone(1)
                     kubernetesDeploy(
                         kubeconfigId: 'kubeconfig',
-                        configs: 'crudapp-kube.yml',
+                        configs: 'kube',
                         enableConfigSubstitution: true
                     )
                 }
