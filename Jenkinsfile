@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
-        DOCKER_IMAGE_NAME = "dineshp4/train-schedule"
+        DOCKER_IMAGE_NAME = "dineshp4/crudapp"
     }
     tools {
      //   jdk 'Java'
@@ -25,7 +25,7 @@ pipeline {
                     nexusArtifactUploader artifacts: [[artifactId: 'crudApp', classifier: '', file: 'target/crudApp.war', type: 'war']], credentialsId: 'nexus', groupId: 'maven-Central', nexusUrl: '10.0.1.6:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-releases', version: '1.${BUILD_NUMBER}'
                 }
             }
-           /* stage ('Docker Build') {
+            stage ('Docker Build') {
                 steps {
                     sh 'wget http://10.0.1.6:8081/repository/maven-releases/maven-Central/crudApp/1.${BUILD_NUMBER}/crudApp-1.${BUILD_NUMBER}.war -O crudApp.war'
                     script {
@@ -33,8 +33,8 @@ pipeline {
                     }
                     sh 'rm -rf crud*'
                 }
-            }*/
-           /* stage ('Docker Push Image') {
+            }
+           stage ('Docker Push Image') {
                 steps{
                     script {
                         docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
@@ -43,7 +43,7 @@ pipeline {
                         }
                     }
                 }
-            }*/
+            }
           /*  stage ('Deploy To Production') {
                 steps {
                     input 'Deploy to Production?'
