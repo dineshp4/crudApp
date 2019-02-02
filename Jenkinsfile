@@ -6,7 +6,7 @@ pipeline {
     }
     tools {
      //   jdk 'Java'
-        maven 'Maven'
+        maven 'maven2'
     }
         stages {
            /* stage ('Git') {
@@ -19,11 +19,6 @@ pipeline {
                     sh 'mvn -Dmaven.test.failure.ignore=true clean package'
                     //sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
                     }
-               /* agent {
-                    dockerfile {
-                        filename 'Dockerfile'
-                    }
-                }*/
             }
             stage ('Nexus') {
                 steps {
@@ -37,9 +32,6 @@ pipeline {
                         app = docker.build(DOCKER_IMAGE_NAME)
                     }
                     sh 'rm -rf crud*'
-                    /*sh 'docker build -t crudapp:1.${BUILD_NUMBER} .'
-                    sh 'rm -rf crud*'
-                    sh 'docker run -dit -p 8081:8080 --name crudapp1.${BUILD_NUMBER} crudapp:1.${BUILD_NUMBER}'*/
                 }
             }*/
            /* stage ('Docker Push Image') {
