@@ -44,7 +44,7 @@ pipeline {
                     }
                 }
             }
-          /*  stage ('Deploy To Production') {
+            stage ('Deploy To Production') {
                 steps {
                     input 'Deploy to Production?'
                     milestone(1)
@@ -54,6 +54,6 @@ pipeline {
                         enableConfigSubstitution: true
                     )
                 }
-            }*/
+            }
         }
 }
