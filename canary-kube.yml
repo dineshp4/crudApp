@@ -1,0 +1,49 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: crudapp-canary
+spec:
+  type: NodePort
+  selector:
+    app: crudapp
+    track: canary
+  ports:
+  - protocol: TCP
+    port: 8080
+    nodePort: 30001
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: crudapp-canary
+  labels:
+    app: train-schedule
+spec:
+  replicas: $CANARY_REPLICAS
+  selector:
+    matchLabels:
+      app: crudapp
+      track: canary
+  template:
+    metadata:
+      labels:
+        app: crudapp
+        track: canary
+    spec:
+      containers:
+      - name: crudapp
+        image: $DOCKER_IMAGE_NAME:$BUILD_NUMBER
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 15
+          timeoutSeconds: 1
+          periodSeconds: 10
+        resources:
+          requests:
+            cpu: 200m
