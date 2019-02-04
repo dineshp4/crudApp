@@ -68,7 +68,7 @@ pipeline {
                     script {
                         sleep (time: 25)
                         def response = httpRequest (
-                            url: "http://$KUBE_MASTER_IP:8081/",
+                            url: "http://$KUBE_MASTER_IP:8081/crudApp",
                             timeout: 30
                         )
                         if (response.status != 200) {
