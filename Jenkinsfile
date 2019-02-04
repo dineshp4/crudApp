@@ -46,9 +46,9 @@ pipeline {
                 }
             }
             stage('CanaryDeploy') {
-                when {
+               /* when {
                     branch 'master'
-                }
+                } */
                 environment {
                     CANARY_REPLICAS = 1
                 }
@@ -61,9 +61,9 @@ pipeline {
                 }
             }
             stage('SmokeTest') {
-                when {
+               /* when {
                     branch 'master'
-                }
+                } */
                 steps {
                     script {
                         sleep (time: 25)
