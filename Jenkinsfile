@@ -1,21 +1,14 @@
 pipeline {
     agent any
     environment {
-        NEXUS_IP= "10.0.1.8"
         DOCKER_IMAGE_NAME = "dineshp4/crudapp"
         CANARY_REPLICAS = 0
     }
     tools {
-     //   jdk 'Java'
         maven 'maven2'
     }
         stages {
-           /* stage ('Git') {
-                steps {
-                    git 'https://github.com/dineshp4/crudApp'
-                }
-            } */
-            stage('Build') {
+             stage('Build') {
                 steps {
                     sh 'mvn -Dmaven.test.failure.ignore=true clean package'
                     //sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
